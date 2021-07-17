@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A592F9F126A9CB6C0032337C /* PlatformAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = A592F9F026A9CB6C0032337C /* PlatformAudio.m */; };
+		A5971D5B26A1F4390071EB84 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5971D5A26A1F4390071EB84 /* AppDelegate.m */; };
+		A5971D6426A1F4390071EB84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5971D6226A1F4390071EB84 /* Main.storyboard */; };
+		A5971D6626A1F4390071EB84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5971D6526A1F4390071EB84 /* Assets.xcassets */; };
+		A5971D6926A1F4390071EB84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5971D6726A1F4390071EB84 /* LaunchScreen.storyboard */; };
+		A5971D6C26A1F4390071EB84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5971D6B26A1F4390071EB84 /* main.m */; };
+		A5971D9326A200F40071EB84 /* RomTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5971D9226A200F40071EB84 /* RomTableViewController.m */; };
+		A5971D9C26A206930071EB84 /* Platform.mm in Sources */ = {isa = PBXBuildFile; fileRef = A5971D9B26A206930071EB84 /* Platform.mm */; };
+		A5C10BED26A4C69D00B630C7 /* vfs in Resources */ = {isa = PBXBuildFile; fileRef = A5C10BEC26A4C69D00B630C7 /* vfs */; };
+		A5CDC7FB26B44D0700FFEADE /* MetalShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = A5CDC7FA26B44D0700FFEADE /* MetalShaders.metal */; };
+		A5DBEA3026A330BA00D802CF /* roms in Resources */ = {isa = PBXBuildFile; fileRef = A5DBEA2F26A330BA00D802CF /* roms */; };
+		A5DBEA3326A338E200D802CF /* RomIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DBEA3226A338E200D802CF /* RomIndex.m */; };
+		A5DBEA3826A349A500D802CF /* app_uxn.c in Sources */ = {isa = PBXBuildFile; fileRef = A5DBEA3726A349A500D802CF /* app_uxn.c */; };
+		A5DBEA3A26A34EE300D802CF /* app_entry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5DBEA3926A34EE300D802CF /* app_entry.cpp */; };
+		A5F6EF3226ADFEAB00BA034B /* MetalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F6EF3126ADFEAB00BA034B /* MetalViewController.m */; };
+		A5F6EF3526AE042400BA034B /* MetalCanvas.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F6EF3426AE042400BA034B /* MetalCanvas.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A54E186326AC41910028E06E /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SampleCode.xcconfig; sourceTree = "<group>"; };
+		A592F9EF26A9CB6C0032337C /* PlatformAudio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlatformAudio.h; sourceTree = "<group>"; };
+		A592F9F026A9CB6C0032337C /* PlatformAudio.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlatformAudio.m; sourceTree = "<group>"; };
+		A5971D5626A1F4390071EB84 /* UxnEmulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UxnEmulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5971D5926A1F4390071EB84 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A5971D5A26A1F4390071EB84 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A5971D6326A1F4390071EB84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A5971D6526A1F4390071EB84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A5971D6826A1F4390071EB84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A5971D6A26A1F4390071EB84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5971D6B26A1F4390071EB84 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A5971D7926A1F6060071EB84 /* uxn */ = {isa = PBXFileReference; lastKnownFileType = folder; name = uxn; path = ../uxn; sourceTree = "<group>"; };
+		A5971D9126A200F40071EB84 /* RomTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RomTableViewController.h; sourceTree = "<group>"; };
+		A5971D9226A200F40071EB84 /* RomTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RomTableViewController.m; sourceTree = "<group>"; };
+		A5971D9A26A206930071EB84 /* Platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
+		A5971D9B26A206930071EB84 /* Platform.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Platform.mm; sourceTree = "<group>"; };
+		A5C10BEC26A4C69D00B630C7 /* vfs */ = {isa = PBXFileReference; lastKnownFileType = folder; name = vfs; path = ../vfs; sourceTree = "<group>"; };
+		A5CDC7FA26B44D0700FFEADE /* MetalShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = MetalShaders.metal; sourceTree = "<group>"; };
+		A5CDC7FC26B44D6500FFEADE /* MetalShaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetalShaders.h; sourceTree = "<group>"; };
+		A5DBEA2F26A330BA00D802CF /* roms */ = {isa = PBXFileReference; lastKnownFileType = folder; name = roms; path = ../roms; sourceTree = "<group>"; };
+		A5DBEA3126A338E200D802CF /* RomIndex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RomIndex.h; sourceTree = "<group>"; };
+		A5DBEA3226A338E200D802CF /* RomIndex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RomIndex.m; sourceTree = "<group>"; };
+		A5DBEA3626A3491800D802CF /* emu_platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = emu_platform.h; sourceTree = "<group>"; };
+		A5DBEA3726A349A500D802CF /* app_uxn.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = app_uxn.c; sourceTree = "<group>"; };
+		A5DBEA3926A34EE300D802CF /* app_entry.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = app_entry.cpp; sourceTree = "<group>"; };
+		A5DBEA3B26A34F4600D802CF /* app_uxn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = app_uxn.h; sourceTree = "<group>"; };
+		A5F6EF3026ADFEAB00BA034B /* MetalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetalViewController.h; sourceTree = "<group>"; };
+		A5F6EF3126ADFEAB00BA034B /* MetalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MetalViewController.m; sourceTree = "<group>"; };
+		A5F6EF3326AE042400BA034B /* MetalCanvas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetalCanvas.h; sourceTree = "<group>"; };
+		A5F6EF3426AE042400BA034B /* MetalCanvas.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MetalCanvas.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A5971D5326A1F4390071EB84 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A5971D4D26A1F4390071EB84 = {
+			isa = PBXGroup;
+			children = (
+				A5971D5826A1F4390071EB84 /* Emulator */,
+				A5971D5726A1F4390071EB84 /* Products */,
+				A5DBEA2F26A330BA00D802CF /* roms */,
+				A5971D7926A1F6060071EB84 /* uxn */,
+				A5C10BEC26A4C69D00B630C7 /* vfs */,
+			);
+			sourceTree = "<group>";
+		};
+		A5971D5726A1F4390071EB84 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A5971D5626A1F4390071EB84 /* UxnEmulator.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A5971D5826A1F4390071EB84 /* Emulator */ = {
+			isa = PBXGroup;
+			children = (
+				A5971D7226A1F4710071EB84 /* App */,
+				A5DBEA3526A3480900D802CF /* Platform */,
+				A5DBEA3426A347E900D802CF /* Roms */,
+			);
+			path = Emulator;
+			sourceTree = "<group>";
+		};
+		A5971D7226A1F4710071EB84 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A5971D5926A1F4390071EB84 /* AppDelegate.h */,
+				A5971D5A26A1F4390071EB84 /* AppDelegate.m */,
+				A5971D6526A1F4390071EB84 /* Assets.xcassets */,
+				A5971D6A26A1F4390071EB84 /* Info.plist */,
+				A5971D6726A1F4390071EB84 /* LaunchScreen.storyboard */,
+				A5971D6B26A1F4390071EB84 /* main.m */,
+				A5971D6226A1F4390071EB84 /* Main.storyboard */,
+				A54E186326AC41910028E06E /* SampleCode.xcconfig */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A5DBEA3426A347E900D802CF /* Roms */ = {
+			isa = PBXGroup;
+			children = (
+				A5DBEA3126A338E200D802CF /* RomIndex.h */,
+				A5DBEA3226A338E200D802CF /* RomIndex.m */,
+				A5971D9126A200F40071EB84 /* RomTableViewController.h */,
+				A5971D9226A200F40071EB84 /* RomTableViewController.m */,
+			);
+			path = Roms;
+			sourceTree = "<group>";
+		};
+		A5DBEA3526A3480900D802CF /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				A5DBEA3926A34EE300D802CF /* app_entry.cpp */,
+				A5DBEA3726A349A500D802CF /* app_uxn.c */,
+				A5DBEA3B26A34F4600D802CF /* app_uxn.h */,
+				A5DBEA3626A3491800D802CF /* emu_platform.h */,
+				A5F6EF3326AE042400BA034B /* MetalCanvas.h */,
+				A5F6EF3426AE042400BA034B /* MetalCanvas.m */,
+				A5CDC7FC26B44D6500FFEADE /* MetalShaders.h */,
+				A5CDC7FA26B44D0700FFEADE /* MetalShaders.metal */,
+				A5F6EF3026ADFEAB00BA034B /* MetalViewController.h */,
+				A5F6EF3126ADFEAB00BA034B /* MetalViewController.m */,
+				A5971D9A26A206930071EB84 /* Platform.h */,
+				A5971D9B26A206930071EB84 /* Platform.mm */,
+				A592F9EF26A9CB6C0032337C /* PlatformAudio.h */,
+				A592F9F026A9CB6C0032337C /* PlatformAudio.m */,
+			);
+			path = Platform;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A5971D5526A1F4390071EB84 /* UxnEmulator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5971D6F26A1F4390071EB84 /* Build configuration list for PBXNativeTarget "UxnEmulator" */;
+			buildPhases = (
+				A5971D5226A1F4390071EB84 /* Sources */,
+				A5971D5326A1F4390071EB84 /* Frameworks */,
+				A5971D5426A1F4390071EB84 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UxnEmulator;
+			productName = UxnEmulator;
+			productReference = A5971D5626A1F4390071EB84 /* UxnEmulator.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A5971D4E26A1F4390071EB84 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					A5971D5526A1F4390071EB84 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+				};
+			};
+			buildConfigurationList = A5971D5126A1F4390071EB84 /* Build configuration list for PBXProject "UxnEmulator" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A5971D4D26A1F4390071EB84;
+			productRefGroup = A5971D5726A1F4390071EB84 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A5971D5526A1F4390071EB84 /* UxnEmulator */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A5971D5426A1F4390071EB84 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C10BED26A4C69D00B630C7 /* vfs in Resources */,
+				A5971D6926A1F4390071EB84 /* LaunchScreen.storyboard in Resources */,
+				A5DBEA3026A330BA00D802CF /* roms in Resources */,
+				A5971D6626A1F4390071EB84 /* Assets.xcassets in Resources */,
+				A5971D6426A1F4390071EB84 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A5971D5226A1F4390071EB84 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5971D5B26A1F4390071EB84 /* AppDelegate.m in Sources */,
+				A5971D6C26A1F4390071EB84 /* main.m in Sources */,
+				A5DBEA3A26A34EE300D802CF /* app_entry.cpp in Sources */,
+				A5F6EF3226ADFEAB00BA034B /* MetalViewController.m in Sources */,
+				A5971D9326A200F40071EB84 /* RomTableViewController.m in Sources */,
+				A592F9F126A9CB6C0032337C /* PlatformAudio.m in Sources */,
+				A5F6EF3526AE042400BA034B /* MetalCanvas.m in Sources */,
+				A5971D9C26A206930071EB84 /* Platform.mm in Sources */,
+				A5CDC7FB26B44D0700FFEADE /* MetalShaders.metal in Sources */,
+				A5DBEA3326A338E200D802CF /* RomIndex.m in Sources */,
+				A5DBEA3826A349A500D802CF /* app_uxn.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A5971D6226A1F4390071EB84 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5971D6326A1F4390071EB84 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A5971D6726A1F4390071EB84 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5971D6826A1F4390071EB84 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A5971D6D26A1F4390071EB84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A54E186326AC41910028E06E /* SampleCode.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A5971D6E26A1F4390071EB84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A54E186326AC41910028E06E /* SampleCode.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A5971D7026A1F4390071EB84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "$(SRCROOT)/Emulator/App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "paiv.UxnEmulator${SAMPLE_CODE_DISAMBIGUATOR}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = ../uxn/src;
+			};
+			name = Debug;
+		};
+		A5971D7126A1F4390071EB84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "$(SRCROOT)/Emulator/App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "paiv.UxnEmulator${SAMPLE_CODE_DISAMBIGUATOR}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = ../uxn/src;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A5971D5126A1F4390071EB84 /* Build configuration list for PBXProject "UxnEmulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5971D6D26A1F4390071EB84 /* Debug */,
+				A5971D6E26A1F4390071EB84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5971D6F26A1F4390071EB84 /* Build configuration list for PBXNativeTarget "UxnEmulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5971D7026A1F4390071EB84 /* Debug */,
+				A5971D7126A1F4390071EB84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A5971D4E26A1F4390071EB84 /* Project object */;
+}

@@ -1,0 +1,54 @@
+[
+    {
+        "section": "",
+        "roms": [
+            {"file": "blank.rom", "description": "a blank file"}
+        ]
+    },
+    {
+        "section": "demos",
+        "roms": [
+            {"file": "demos/automata.rom", "description": "Project by Alex Schroeder - https://alexschroeder.ch"},
+            {"file": "demos/bifurcan.rom", "description": "Every second, the Labyrinth reorganize itself to display the time."},
+            {"file": "demos/darena.rom", "description": "an open-ended game of rocks and sand\ncontributed by and cc0 sejo 12021"},
+            {"file": "demos/drum-rack.rom", "description": "drum rack"},
+            {"file": "demos/font.rom", "description": "font"},
+            {"file": "demos/life.rom", "description": "Game Of Life"},
+            {"file": "demos/musictracker.rom", "description": "mini music tracker"},
+            {"file": "demos/neralie.rom", "description": "clock with arvelie date"},
+            {"file": "demos/piano.rom", "description": "piano"},
+            {"file": "demos/polycat.rom", "description": "polycat"},
+            {"file": "demos/theme.rom", "description": "Dev/Screen"}
+        ]
+    },
+    {
+        "section": "devices",
+        "roms": [
+            {"file": "devices/audio.channels.rom", "description": ""},
+            {"file": "devices/audio.rom", "description": ""},
+            {"file": "devices/console.echo.rom", "description": ""},
+            {"file": "devices/console.lib.rom", "description": ""},
+            {"file": "devices/console.rom", "description": ""},
+            {"file": "devices/controller.buttons.rom", "description": ""},
+            {"file": "devices/controller.keys.rom", "description": ""},
+            {"file": "devices/datetime.rom", "description": ""},
+            {"file": "devices/file.load.rom", "description": ""},
+            {"file": "devices/file.rom", "description": ""},
+            {"file": "devices/file.save.rom", "description": ""},
+            {"file": "devices/mouse.rom", "description": ""},
+            {"file": "devices/screen.rom", "description": ""}
+        ]
+    },
+    {
+        "section": "gui",
+        "roms": [
+            {"file": "gui/animation.rom", "description": "GUI Animation"},
+            {"file": "gui/hover.rom", "description": "GUI Hover"},
+            {"file": "gui/label.rom", "description": "GUI Labels"},
+            {"file": "gui/picture.rom", "description": "GUI Picture"},
+            {"file": "gui/proportional-font.rom", "description": "GUI Proportional font"},
+            {"file": "gui/shapes.rom", "description": "GUI Shapes"},
+            {"file": "gui/wallpaper.rom", "description": ""}
+        ]
+    }
+]
