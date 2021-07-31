@@ -8,7 +8,9 @@
 
 @property (weak, nonatomic) IBOutlet MTKView* canvas;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem* canvasScaleButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem* debugButton;
 @property (assign, nonatomic) NSUInteger canvasScaleIndex;
+@property (assign, nonatomic) BOOL debugInfoOn;
 @property (strong, nonatomic) NSTimer* navigationBarTimer;
 
 @end
@@ -18,6 +20,10 @@
 
 - (IBAction)handleScaleButton:(id)sender {
     self.canvasScaleIndex += 1;
+}
+
+- (IBAction)handleDebugButton:(id)sender {
+    self.debugInfoOn = !self.debugInfoOn;
 }
 
 - (IBAction)handleTapGesture:(id)sender {
@@ -114,6 +120,11 @@
 - (void)setCanvasScale:(CGFloat)scale {
     self.canvas.transform = CGAffineTransformMakeScale(scale, scale);
     [NSUserDefaults.standardUserDefaults setFloat:scale forKey:@"AppCanvasScale"];
+}
+
+- (void)setDebugInfoOn:(BOOL)debugInfoOn {
+    _debugInfoOn = debugInfoOn;
+    PlatformDelegateSetDebug(debugInfoOn);
 }
 
 @end

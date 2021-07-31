@@ -15,12 +15,15 @@
 static Uxn _uxn;
 static Ppu _ppu;
 static Apu _apu[POLYPHONY];
-static Device *devscreen, *devmouse, *devaudio0;
+static Device *devsystem, *devscreen, *devmouse, *devaudio0;
 static Uint8 reqdraw = 0;
 
 
 static void
 redraw(Uxn *u) {
+    if(devsystem->dat[0xe]) {
+        inspect(&_ppu, u->wst.dat, u->wst.ptr, u->rst.ptr, u->ram.dat);
+    }
     PlatformBitmap bg = {
         .width = _ppu.width,
         .height = _ppu.height,
@@ -55,8 +58,7 @@ system_talk(Device *d, Uint8 b0, Uint8 w) {
 
 
 static void
-console_talk(Device *d, Uint8 b0, Uint8 w)
-{
+console_talk(Device *d, Uint8 b0, Uint8 w) {
 //    if(w && b0 > 0x7)
 //        write(b0 - 0x7, (char *)&d->dat[b0], 1);
 }
@@ -82,8 +84,7 @@ screen_talk(Device *d, Uint8 b0, Uint8 w) {
 
 
 static void
-file_talk(Device *d, Uint8 b0, Uint8 w)
-{
+file_talk(Device *d, Uint8 b0, Uint8 w) {
     Uint8 read = b0 == 0xd;
     if(w && (read || b0 == 0xf)) {
         char *name = (char *)&d->mem[mempeek16(d->dat, 0x8)];
@@ -159,7 +160,7 @@ uxnapp_init(void) {
         return;
     }
 
-    portuxn(u, 0x0, "system", system_talk);
+    devsystem = portuxn(u, 0x0, "system", system_talk);
     portuxn(u, 0x1, "console", console_talk);
     devscreen = portuxn(u, 0x2, "screen", screen_talk);
     devaudio0 = portuxn(u, 0x3, "audio0", audio_talk);
@@ -167,7 +168,7 @@ uxnapp_init(void) {
     portuxn(u, 0x5, "audio2", audio_talk);
     portuxn(u, 0x6, "audio3", audio_talk);
     portuxn(u, 0x7, "---", nil_talk);
-    portuxn(u, 0x8, "---", nil_talk);
+    portuxn(u, 0x8, "controller", nil_talk);
     devmouse = portuxn(u, 0x9, "mouse", nil_talk);
     portuxn(u, 0xa, "file", file_talk);
     portuxn(u, 0xb, "datetime", datetime_talk);
@@ -196,8 +197,16 @@ void
 uxnapp_runloop(void) {
     Uxn* u = &_uxn;
     evaluxn(u, mempeek16(devscreen->dat, 0));
-    if(reqdraw)
+    if(reqdraw || devsystem->dat[0xe])
         redraw(u);
+}
+
+
+void
+uxnapp_setdebug(u8 debug) {
+    Uxn* u = &_uxn;
+    devsystem->dat[0xe] = debug ? 1 : 0;
+    redraw(u);
 }
 
 

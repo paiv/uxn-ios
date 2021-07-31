@@ -53,6 +53,7 @@ i32 PlatformSeekFile(PlatformFile file, u32 offset, u32 whence);
 void PlatformDelegateAppEntry(void);
 void PlatformDelegateAppRunloop(void);
 void PlatformDelegateAppExit(void);
+void PlatformDelegateSetDebug(u8 debug);
 void PlatformDelegateMoveMouse(i16 x, i16 y);
 void PlatformDelegateMouseButton(PlatformMouseButton button, u8 down);
 void PlatformDelegateRenderAudio(u8* buffer, u32 size);

@@ -21,6 +21,12 @@ PlatformDelegateAppRunloop() {
 
 
 void
+PlatformDelegateSetDebug(u8 debug) {
+    uxnapp_setdebug(debug);
+}
+
+
+void
 PlatformDelegateMoveMouse(i16 x, i16 y) {
     uxnapp_movemouse(x, y);
 }

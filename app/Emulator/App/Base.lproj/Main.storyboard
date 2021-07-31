@@ -38,15 +38,23 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="NOg-6b-LUJ">
-                        <barButtonItem key="rightBarButtonItem" title="Scale 4x" id="5RG-LL-9vE">
-                            <connections>
-                                <action selector="handleScaleButton:" destination="Fzt-5D-G7L" id="2mh-oa-XWo"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Scale 4x" id="5RG-LL-9vE">
+                                <connections>
+                                    <action selector="handleScaleButton:" destination="Fzt-5D-G7L" id="2mh-oa-XWo"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="[`]" id="K9V-KB-B1I">
+                                <connections>
+                                    <action selector="handleDebugButton:" destination="Fzt-5D-G7L" id="Gcv-cG-rmY"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="canvas" destination="yge-sH-clk" id="hSV-1A-dgY"/>
                         <outlet property="canvasScaleButton" destination="5RG-LL-9vE" id="f0i-oN-Neq"/>
+                        <outlet property="debugButton" destination="K9V-KB-B1I" id="S14-Gq-H0A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kaw-6R-FX7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
