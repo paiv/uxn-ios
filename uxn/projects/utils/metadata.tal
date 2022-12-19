@@ -1,0 +1,213 @@
+( A little program to see a rom's metadata )
+
+|00 @System &vector $2 &pad $6 &r $2 &g $2 &b $2
+|10 @Console &vector $2 &read $1 &pad $5 &write $1
+|20 @Screen &vector $2 &width $2 &height $2 &auto $1 &pad $1 &x $2 &y $2 &addr $2 &pixel $1 &sprite $1
+|b0 @Disk &vector $2 &success $2 &stat $2 &delete $1 &append $1 &name $2 &length $2 &read $2 &write $2
+
+|0000
+
+	@src $40
+
+|0100 ( -> )
+
+	#f0af .System/r DEO2
+	#f0af .System/g DEO2
+	#f0af .System/b DEO2
+
+	#0150 .Screen/width DEO2
+	#0050 .Screen/height DEO2
+
+	;await-src .Console/vector DEO2
+	;dict/input ;pstr JSR2
+
+BRK
+
+@await-src ( -> )
+
+	.Console/read DEI .src ;skey JSR2
+		,on-ready JCN
+
+BRK
+
+@on-ready ( -> )
+
+	;src
+		DUP2 ;pstr JSR2 #0a18 DEO
+		;draw-metadata JSR2
+
+BRK
+
+@draw-metadata ( str* -- )
+
+	 .Disk/name DEO2
+	( read )
+	#0006 .Disk/length DEO2
+	;&header .Disk/read DEO2
+
+	;&deo LDA2 #f037 NEQ2
+		;&missing JCN2
+
+	;&start LDA2 #0100 SUB2 ;seek JSR2
+	#0004 .Disk/length DEO2
+	;&end
+		DUP2 .Disk/read DEO2
+		LDA2 ;&start LDA2 SUB2 .Disk/length DEO2
+	;data
+		DUP2 .Disk/read DEO2
+
+	( draw )
+	#0058 STH2k .Screen/x DEO2
+	#0018 .Screen/y DEO2
+
+	( body )
+	;draw-str JSR2
+	#20 ;draw-chr JSR2
+	#02 ;draw-str-color JSR2 ;draw-lb JSR2
+	STH2kr .Screen/x DEO2
+	#01 ;draw-str-color JSR2 ;draw-lb JSR2
+	STH2r .Screen/x DEO2
+	;draw-str JSR2 ;draw-lb JSR2
+	POP2
+
+	( icon )
+	;&icon LDA2 #0100 SUB2 ;seek JSR2
+	#0200 .Disk/length DEO2
+	;data
+		DUP2 .Disk/read DEO2
+		#76 ;draw-icon JSR2
+
+JMP2r
+	&header $1 &start $3 &deo $2 &end $2 &icon $2
+
+&missing ( -- )
+
+	;blank-icn #72 ;draw-icon JSR2
+	#0058 STH2k .Screen/x DEO2
+	#0018 .Screen/y DEO2
+	;src ;draw-str JSR2 POP2
+	;draw-lb JSR2
+	STH2r .Screen/x DEO2
+	;dict/empty ;draw-str JSR2 POP2
+
+JMP2r
+
+@draw-icon ( addr* auto -- )
+
+	#0008
+		DUP2 .Screen/x DEO2
+		.Screen/y DEO2
+	.Screen/auto DEO
+	.Screen/addr DEO2
+	#01 .Screen/sprite 
+		DEOk DEOk DEOk DEOk
+		DEOk DEOk DEOk DEO
+
+JMP2r
+
+@draw-lb ( -- )
+
+	.Screen/y DEI2k #000c ADD2 ROT DEO2
+
+JMP2r
+
+@draw-str-color ( str* color -- str* )
+
+	;draw-chr/color STA
+
+@draw-str ( str* -- str* )
+
+	LDAk #00 EQU ,&skip JCN
+	#01 .Screen/auto DEO
+	&while
+		LDAk ,draw-chr JSR
+		INC2 LDAk ,&while JCN
+	&skip
+	INC2
+
+JMP2r
+
+@draw-chr ( char -- )
+
+	#20 SUB #00 SWP #30 SFT2 ;font ADD2 .Screen/addr DEO2
+	[ LIT &color 01 ] .Screen/sprite DEO
+
+JMP2r
+
+@seek ( length* -- )
+
+	.Disk/name DEI2k ROT  DEO2
+	#0001 .Disk/length DEO2
+	#0000
+	&l
+		;&b .Disk/read DEO2
+		INC2 GTH2k ,&l JCN
+	POP2 POP2
+	
+JMP2r
+	&b $1
+
+@scap ( str* -- end* ) LDAk #00 NEQ JMP JMP2r &w INC2 LDAk ,&w JCN JMP2r
+@sput ( chr str* -- ) ,scap JSR STA JMP2r
+@skey ( key buf -- proc ) OVR #21 LTH ,&eval JCN #00 SWP ;sput JSR2 #00 JMP2r &eval POP2 #01 JMP2r
+@pstr ( str* -- ) &w LDAk #18 DEO INC2 LDAk ,&w JCN POP2 JMP2r
+
+@dict
+	&input "Input(.tal): 20 $1
+	&empty "Metadata 20 "Missing $1
+
+@blank-icn
+	aa55 aa55 aa55 aa55
+
+@font ( atari8 )
+0000 0000 0000 0000 6060 6060 6000 6000
+6666 6600 0000 0000 006c fe6c 6cfe 6c00
+183e 603c 067c 1800 0066 6c18 3066 4600
+386c 3870 decc 7600 6060 6000 0000 0000
+1c30 3030 3030 1c00 380c 0c0c 0c0c 3800
+0066 3cff 3c66 0000 0018 187e 1818 0000
+0000 0000 0030 3060 0000 007e 0000 0000
+0000 0000 0018 1800 0306 0c18 3060 c000
+3c66 6e76 6666 3c00 1838 1818 1818 7e00
+3c66 060c 1830 7e00 7e0c 180c 0666 3c00
+0c1c 3c6c 7e0c 0c00 7e60 7c06 0666 3c00
+3c60 607c 6666 3c00 7e06 0c18 3030 3000
+3c66 663c 6666 3c00 3c66 663e 060c 3800
+0018 1800 0018 1800 0018 1800 1818 3000
+0c18 3060 3018 0c00 0000 7e00 007e 0000
+3018 0c06 0c18 3000 3c66 060c 1800 1800
+3c66 6e6a 6e60 3e00 183c 6666 7e66 6600
+7c66 667c 6666 7c00 3c66 6060 6066 3c00
+786c 6666 666c 7800 7e60 607c 6060 7e00
+7e60 607c 6060 6000 3e60 606e 6666 3e00
+6666 667e 6666 6600 3c18 1818 1818 3c00
+3e06 0606 0666 3c00 666c 7870 786c 6600
+6060 6060 6060 7e00 c6ee fed6 c6c6 c600
+6676 7e7e 6e66 6600 3c66 6666 6666 3c00
+7c66 667c 6060 6000 3c66 6666 766c 3600
+7c66 667c 6c66 6600 3c66 603c 0666 3c00
+7e18 1818 1818 1800 6666 6666 6666 3e00
+6666 6666 663c 1800 c6c6 c6d6 feee c600
+6666 3c18 3c66 6600 6666 663c 1818 1800
+7e06 0c18 3060 7e00 3c30 3030 3030 3c00
+c060 3018 0c06 0300 3c0c 0c0c 0c0c 3c00
+1038 6cc6 0000 0000 0000 0000 0000 fe00
+0060 3018 0000 0000 0000 3c06 3e66 3e00
+6060 7c66 6666 7c00 0000 3c60 6060 3c00
+0606 3e66 6666 3e00 0000 3c66 7e60 3c00
+1c30 7c30 3030 3000 0000 3e66 663e 067c
+6060 7c66 6666 6600 1800 3818 1818 3c00
+1800 1818 1818 1870 6060 666c 786c 6600
+3818 1818 1818 3c00 0000 ecfe d6c6 c600
+0000 7c66 6666 6600 0000 3c66 6666 3c00
+0000 7c66 6666 7c60 0000 3e66 6666 3e06
+0000 7c66 6060 6000 0000 3e60 3c06 7c00
+0018 7e18 1818 0e00 0000 6666 6666 3e00
+0000 6666 663c 1800 0000 c6c6 d67c 6c00
+0000 663c 183c 6600 0000 6666 663e 067c
+0000 7e0c 1830 7e00 1c30 3060 3030 1c00
+1818 1818 1818 1818 380c 0c06 0c0c 3800
+0000 60f2 9e0c 0000 3c42 9985 8599 423c
+
+@data
+
