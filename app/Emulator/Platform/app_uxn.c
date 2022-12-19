@@ -2,9 +2,11 @@
 #include "emu_platform.h"
 #include "app_uxn.h"
 
-#import "uxn.h"
+#include "uxn.h"
 
+#include "devices/screen.h"
 #include "devices/audio.c"
+#include "devices/screen.c"
 #if DEBUG
 #include "uxn.c"
 #else
@@ -12,8 +14,6 @@
 #endif
 
 static Uxn _uxn;
-//static Ppu _ppu;
-//static Apu _apu[POLYPHONY];
 static Device *devsystem, *devscreen, *devmouse, *devaudio0;
 static Uint8 reqdraw = 0;
 
@@ -21,17 +21,17 @@ static Uint8 reqdraw = 0;
 static void
 redraw(Uxn *u) {
     if(devsystem->dat[0xe]) {
-        inspect(&_ppu, u->wst.dat, u->wst.ptr, u->rst.ptr, u->ram.dat);
+        inspect(&uxn_screen, u->wst.dat, u->wst.ptr, u->rst.ptr, u->ram.dat);
     }
     PlatformBitmap bg = {
-        .width = _ppu.width,
-        .height = _ppu.height,
-        .pixels = _ppu.bg.pixels,
+        .width = uxn_screen.width,
+        .height = uxn_screen.height,
+        .pixels = uxn_screen.bg.pixels,
     };
     PlatformBitmap fg = {
-        .width = _ppu.width,
-        .height = _ppu.height,
-        .pixels = _ppu.fg.pixels,
+        .width = uxn_screen.width,
+        .height = uxn_screen.height,
+        .pixels = uxn_screen.fg.pixels,
     };
     PlatformDrawBackground(&bg);
     PlatformDrawForeground(&fg);
@@ -50,7 +50,8 @@ system_talk(Device *d, Uint8 b0, Uint8 w) {
         d->dat[0x2] = d->u->wst.ptr;
         d->dat[0x3] = d->u->rst.ptr;
     } else {
-        putcolors(&_ppu, &d->dat[0x8]);
+        // TODO find equiv of putcolors()
+        //putcolors(&uxn_screen, &d->dat[0x8]);
         reqdraw = 1;
     }
 }
@@ -69,14 +70,14 @@ screen_talk(Device *d, Uint8 b0, Uint8 w) {
         Uint16 x = PEEK16(d->dat, 0x8);
         Uint16 y = PEEK16(d->dat, 0xa);
         Uint8 *addr = &d->mem[mempeek16(d->dat, 0xc)];
-        Layer *layer = d->dat[0xe] >> 4 & 0x1 ? &_ppu.fg : &_ppu.bg;
+        Layer *layer = d->dat[0xe] >> 4 & 0x1 ? &uxn_screen.fg : &uxn_screen.bg;
         Uint8 mode = d->dat[0xe] >> 5;
         if(!mode)
-            putpixel(&_ppu, layer, x, y, d->dat[0xe] & 0x3);
+            putpixel(&uxn_screen, layer, x, y, d->dat[0xe] & 0x3);
         else if(mode-- & 0x1)
-            puticn(&_ppu, layer, x, y, addr, d->dat[0xe] & 0xf, mode & 0x2, mode & 0x4);
+            puticn(&uxn_screen, layer, x, y, addr, d->dat[0xe] & 0xf, mode & 0x2, mode & 0x4);
         else
-            putchr(&_ppu, layer, x, y, addr, d->dat[0xe] & 0xf, mode & 0x2, mode & 0x4);
+            putchr(&uxn_screen, layer, x, y, addr, d->dat[0xe] & 0xf, mode & 0x2, mode & 0x4);
         reqdraw = 1;
     }
 }
@@ -155,7 +156,7 @@ uxnapp_init(void) {
     PlatformGetScreenSize(&w, &h);
     w /= 8;
     h /= 8;
-    if (!initppu(&_ppu, w, h)) {
+    if (!initppu(&uxn_screen, w, h)) {
         return;
     }
 
@@ -176,8 +177,8 @@ uxnapp_init(void) {
     portuxn(u, 0xe, "---", nil_talk);
     portuxn(u, 0xf, "---", nil_talk);
 
-    mempoke16(devscreen->dat, 2, _ppu.hor * 8);
-    mempoke16(devscreen->dat, 4, _ppu.ver * 8);
+    mempoke16(devscreen->dat, 2, uxn_screen.hor * 8);
+    mempoke16(devscreen->dat, 4, uxn_screen.ver * 8);
 
     evaluxn(u, PAGE_PROGRAM);
     redraw(u);
@@ -187,8 +188,8 @@ uxnapp_init(void) {
 void
 uxnapp_deinit(void) {
     PlatformAudioCloseOutput();
-    PlatformFree(_ppu.bg.pixels);
-    PlatformFree(_ppu.fg.pixels);
+    PlatformFree(uxn_screen.bg.pixels);
+    PlatformFree(uxn_screen.fg.pixels);
 }
 
 
@@ -219,8 +220,8 @@ void
 uxnapp_movemouse(i16 mx, i16 my) {
     Uxn* u = &_uxn;
 
-    Uint16 x = clamp(mx, 0, _ppu.hor * 8 - 1);
-    Uint16 y = clamp(my, 0, _ppu.ver * 8 - 1);
+    Uint16 x = clamp(mx, 0, uxn_screen.hor * 8 - 1);
+    Uint16 y = clamp(my, 0, uxn_screen.ver * 8 - 1);
     mempoke16(devmouse->dat, 0x2, x);
     mempoke16(devmouse->dat, 0x4, y);
 
