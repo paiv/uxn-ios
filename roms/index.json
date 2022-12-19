@@ -2,7 +2,9 @@
     {
         "section": "",
         "roms": [
-            {"file": "blank.rom", "description": "a blank file"}
+            {"file": "blank.rom", "description": "a blank file"},
+            {"file": "launcher.rom", "description": "launcher"},
+            {"file": "left.rom", "description": "left text editor"}
         ]
     },
     {

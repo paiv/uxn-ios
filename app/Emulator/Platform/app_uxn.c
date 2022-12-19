@@ -4,8 +4,7 @@
 
 #import "uxn.h"
 
-#include "devices/apu.c"
-#include "devices/ppu.c"
+#include "devices/audio.c"
 #if DEBUG
 #include "uxn.c"
 #else
@@ -13,8 +12,8 @@
 #endif
 
 static Uxn _uxn;
-static Ppu _ppu;
-static Apu _apu[POLYPHONY];
+//static Ppu _ppu;
+//static Apu _apu[POLYPHONY];
 static Device *devsystem, *devscreen, *devmouse, *devaudio0;
 static Uint8 reqdraw = 0;
 
@@ -67,8 +66,8 @@ console_talk(Device *d, Uint8 b0, Uint8 w) {
 static void
 screen_talk(Device *d, Uint8 b0, Uint8 w) {
     if(w && b0 == 0xe) {
-        Uint16 x = mempeek16(d->dat, 0x8);
-        Uint16 y = mempeek16(d->dat, 0xa);
+        Uint16 x = PEEK16(d->dat, 0x8);
+        Uint16 y = PEEK16(d->dat, 0xa);
         Uint8 *addr = &d->mem[mempeek16(d->dat, 0xc)];
         Layer *layer = d->dat[0xe] >> 4 & 0x1 ? &_ppu.fg : &_ppu.bg;
         Uint8 mode = d->dat[0xe] >> 5;
